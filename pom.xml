@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>timbrado</groupId>
+    <artifactId>mx.com.sifei</artifactId>
+    <version>1.0.0</version>
+    <name>timbrado.jar</name>
+    <build>
+        <plugins>
+            <!-- Generates JAVA source files from the Sifei WSDL -->
+            <!-- Genera los artefactos Java desde el WSDL de Sifei -->
+            <!-- -->
+            <plugin>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+                <version>1.7.7</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsdl2code</goal>
+                        </goals>
+                        <configuration>
+                            <packageName>mx.com.sifei.timbrado</packageName>
+                            <wsdlFile>sifei.wsdl</wsdlFile>
+                            <databindingName>xmlbeans</databindingName>
+                          
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>src</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                     
+                        <phase>package</phase>
+                         
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.openejb</groupId>
+                                    <artifactId>openejb-javaagent</artifactId>
+                                    <version>3.0-beta-2</version>
+                                    <outputDirectory>${project.build.directory}</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>target/generated-sources/axis2/wsdl2code/resources</directory>
+            </resource>
+            <resource>
+                <directory>target/generated-sources/xmlbeans/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	        <maven.compiler.source>8</maven.compiler.source>
+		        <maven.compiler.target>1.8</maven.compiler.target>  
+
+    </properties>
+</project>
