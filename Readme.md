@@ -7,23 +7,23 @@
 
 Este repositorio incluye el JAR con los artefactos necesarios para consumir el WS de timbrado, solo debes importarlo en tu proyecto.
 
-Url de pruebas:
+URL de pruebas:
 
 http://devcfdi.sifei.com.mx:8080/SIFEI33/SIFEI?wsdl
 
 
-Puedes utilizar el jar incluido o bien generarlo tu mismo y luego importarlo en tu proyecto Java.
+Puedes utilizar el JAR incluido, o bien, generarlo tu mismo y para luego importarlo en tu proyecto Java.
 
 
 ## Descargar JAR
 Puedes descargar directamente el JAR:
 
-[Descargar JAR aquí](https://github.com/SifeiMexico/timbradoJarAxis2/raw/master/target/mx.com.sifei-1.0.0-sources.jar)
+[Descargar JAR aquí](https://github.com/SifeiMexico/timbradoJarAxis2/raw/master/target/mx.com.sifei-1.0.0.jar)
 
 
-## Generación de JAR
+## Generación de JAR (opcional)
  
-Para ejecutar el jar tu mismo debes descargar el proyecto y ejecutar:
+Para generar el JAR tu mismo debes descargar el proyecto y ejecutar los siguientes comandos, es necesario que tengas al menos *maven* instalado:
 
 
 
@@ -94,7 +94,7 @@ Si deseas ver un ejemplo completo favor de ver:
 {enlace del proyecto}
 
 ## Dependencias maven
-Tras importar el JAR en tu proyecto, dentro de tu archivo pom deberas agregar las siguiente depedencias.
+Tras importar el JAR en tu proyecto, dentro de tu archivo pom deberas agregar las siguiente dependencias.
 
 
 ```xml
