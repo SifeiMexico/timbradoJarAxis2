@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>timbrado</groupId>
     <artifactId>mx.com.sifei</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>timbrado.jar</name>
     <build>
         <plugins>
@@ -16,12 +16,25 @@
                 <version>1.7.7</version>
                 <executions>
                     <execution>
+                        <id>wsdlTimbrado</id>
                         <goals>
                             <goal>wsdl2code</goal>
                         </goals>
                         <configuration>
                             <packageName>mx.com.sifei.timbrado</packageName>
                             <wsdlFile>sifei.wsdl</wsdlFile>
+                            <databindingName>xmlbeans</databindingName>
+                          
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>wsdlCancelacion</id>
+                        <goals>
+                            <goal>wsdl2code</goal>
+                        </goals>
+                        <configuration>
+                            <packageName>mx.com.sifei.cancelacion</packageName>
+                            <wsdlFile>cancelacion.wsdl</wsdlFile>
                             <databindingName>xmlbeans</databindingName>
                           
                         </configuration>
